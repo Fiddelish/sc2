@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SC1 | Athletes</title>
+		<meta
+			name="description"
+			content="SC1 athletes showcase with a brutalist MMA trading-card style UI mockup."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<style>
+			.athletes-shell {
+				padding-top: 44px;
+			}
+
+			.athletes-shell .section-heading {
+				justify-items: center;
+				text-align: center;
+			}
+
+			.athletes-lead {
+				margin: 14px auto 24px;
+				max-width: 64ch;
+				text-align: center;
+			}
+
+			.fight-card-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 20px;
+			}
+
+			.fight-card-frame {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				min-height: 520px;
+				border: 1px solid rgba(255, 255, 255, 0.28);
+				border-radius: 8px;
+				background: linear-gradient(180deg, rgba(18, 18, 18, 0.96), rgba(7, 7, 7, 0.98));
+				box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
+				overflow: hidden;
+			}
+
+			.fight-card-frame::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				pointer-events: none;
+				background:
+					linear-gradient(90deg, transparent 0, transparent 6%, rgba(255, 255, 255, 0.22) 6%, rgba(255, 255, 255, 0.22) 6.5%, transparent 6.5%, transparent 93.5%, rgba(255, 255, 255, 0.22) 93.5%, rgba(255, 255, 255, 0.22) 94%, transparent 94%),
+					linear-gradient(180deg, transparent 0, transparent 6%, rgba(255, 255, 255, 0.22) 6%, rgba(255, 255, 255, 0.22) 6.4%, transparent 6.4%, transparent 93.6%, rgba(255, 255, 255, 0.22) 93.6%, rgba(255, 255, 255, 0.22) 94%, transparent 94%);
+			}
+
+			.fight-card-frame::after {
+				content: "";
+				position: absolute;
+				inset: 18px;
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				clip-path: polygon(10% 0, 90% 0, 100% 14%, 100% 86%, 90% 100%, 10% 100%, 0 86%, 0 14%);
+				pointer-events: none;
+			}
+
+			.fighter-portrait-wrap {
+				position: relative;
+				height: clamp(220px, 26vw, 300px);
+				background: #080808;
+				clip-path: polygon(6% 0, 94% 0, 100% 12%, 100% 100%, 0 100%, 0 12%);
+			}
+
+			.fighter-portrait {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center 20%;
+				filter: grayscale(1) contrast(1.08) brightness(0.9);
+			}
+
+			.portrait-vignette {
+				position: absolute;
+				inset: 0;
+				background: linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.58) 68%, rgba(0, 0, 0, 0.86));
+			}
+
+			.champion-badge {
+				position: absolute;
+				top: 18px;
+				right: 18px;
+				margin: 0;
+				padding: 7px 12px;
+				border: 1px solid #ff3b3b;
+				background: #d10f0f;
+				color: #fff;
+				font-size: 0.72rem;
+				font-weight: 800;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+			}
+
+			.fighter-summary {
+				display: grid;
+				align-content: center;
+				justify-items: center;
+				text-align: center;
+				gap: 10px;
+				min-height: 112px;
+				padding: 18px 16px 10px;
+			}
+
+			.fighter-name {
+				margin: 0;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+				letter-spacing: 0.04em;
+				line-height: 0.95;
+				color: #fff;
+			}
+
+			.fighter-record {
+				margin: 0;
+				color: #f2f2f2;
+				font-size: 0.82rem;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.fighter-record em {
+				font-style: normal;
+				color: #bcbcbc;
+				font-weight: 700;
+			}
+
+			.fighter-record strong {
+				color: #fff;
+			}
+
+			.stat-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				border-top: 1px solid rgba(255, 255, 255, 0.16);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+				margin: 10px 16px 16px;
+			}
+
+			.stat-cell {
+				padding: 12px 10px;
+				border-right: 1px solid rgba(255, 255, 255, 0.14);
+				display: grid;
+				gap: 5px;
+				text-align: center;
+			}
+
+			.stat-cell:last-child {
+				border-right: 0;
+			}
+
+			.stat-label {
+				margin: 0;
+				color: #bbbbbb;
+				font-size: 0.62rem;
+				font-weight: 700;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+			}
+
+			.stat-value {
+				margin: 0;
+				color: #ffffff;
+				font-size: 0.82rem;
+				font-weight: 800;
+				letter-spacing: 0.04em;
+			}
+
+			.fighter-social-row {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				margin: 0 16px 16px;
+				padding-top: 10px;
+				border-top: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.fighter-social-label {
+				display: none;
+			}
+
+			.fighter-social-link {
+				color: #ffffff;
+				font-size: 0.8rem;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.fighter-social-link:hover {
+				color: #dcdcdc;
+			}
+
+			.mockup-note {
+				margin: 12px 0 0;
+				color: #9e9e9e;
+				font-size: 0.82rem;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+			}
+
+			@media (max-width: 1100px) {
+				.fight-card-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.fight-card-frame {
+					min-height: 500px;
+				}
+
+				.fighter-portrait-wrap {
+					height: clamp(230px, 32vw, 300px);
+				}
+			}
+
+			@media (max-width: 900px) {
+				.stat-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.stat-cell:nth-child(2n) {
+					border-right: 0;
+				}
+
+				.stat-cell:nth-child(-n + 2) {
+					border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+				}
+			}
+
+			@media (max-width: 760px) {
+				.fight-card-frame {
+					min-height: 0;
+				}
+
+				.fight-card-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.athletes-shell {
+					padding-top: 28px;
+				}
+
+				.fight-card-grid {
+					gap: 14px;
+				}
+
+				.champion-badge {
+					top: 12px;
+					right: 12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page-shell">
+			<header class="site-header wrap">
+				<nav class="site-nav site-nav-desktop site-nav-left" aria-label="Primary left">
+					<a href="gallery.html">Gallery</a>
+					<a class="active" href="athletes.html">Athletes</a>
+				</nav>
+
+				<a class="brand" href="index.html" aria-label="SC1 home">
+					<img class="brand-logo" src="sc1.svg" alt="SC1 logo" />
+				</a>
+
+				<nav class="site-nav site-nav-desktop site-nav-right" aria-label="Primary right">
+					<a href="webshop.html">Shop</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+
+				<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+					<span class="nav-toggle-icon" aria-hidden="true"></span>
+					<span class="nav-toggle-label">Menu</span>
+				</button>
+
+				<nav class="site-nav" id="primaryNav" aria-label="Primary mobile">
+					<button class="menu-close" type="button" aria-label="Close navigation menu">
+						<span aria-hidden="true">Close</span>
+					</button>
+					<a href="gallery.html">Gallery</a>
+					<a class="active" href="athletes.html">Athletes</a>
+					<a href="webshop.html">Shop</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+			</header>
+
+			<main id="top" class="athletes-shell">
+				<section class="section wrap" aria-labelledby="athletes-title">
+					<div class="section-heading">
+						<p class="eyebrow">Athletes</p>
+						<h2 id="athletes-title">Super Clean One Athletes</h2>
+						<p class="athletes-lead">Each card now represents one fighter profile with record, weight, style, and physical stats in a collectible card format.</p>
+					</div>
+
+					<div class="fight-card-grid">
+						<article class="fight-card-frame" aria-label="Rami Northside fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" alt="Rami Northside fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Champion</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">RAMI PizzabagarN</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>8-1</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Welter</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">181 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Boxing</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+
+						<article class="fight-card-frame" aria-label="Leon Riot fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" style="object-position: center 38%;" alt="Leon Riot fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Contender</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">Luna "RIOT"</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>11-2</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Welter</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">183 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Kickboxing</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+
+						<article class="fight-card-frame" aria-label="Isak Breakout fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" style="object-position: center 46%;" alt="Isak Breakout fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Striker</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">Louie "Apan"</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>6-2</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Middle</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">182 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Counter MMA</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+
+						<article class="fight-card-frame" aria-label="Milan Blackline fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" style="object-position: center 54%;" alt="Milan Blackline fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Veteran</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">Fredrik "Fid"</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>10-3</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Middle</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">180 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Muay Thai</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+
+						<article class="fight-card-frame" aria-label="Alex Cold Cut fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" style="object-position: center 62%;" alt="Alex Cold Cut fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Pressure</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">Lino "vill ha macka"</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>7-2</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Feather</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">177 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Boxing / MMA</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+
+						<article class="fight-card-frame" aria-label="Deni Pressure fighter card">
+							<div class="fighter-portrait-wrap">
+								<img class="fighter-portrait" src="sc3.jpg" style="object-position: center 70%;" alt="Deni Pressure fighter portrait" />
+								<div class="portrait-vignette" aria-hidden="true"></div>
+								<p class="champion-badge">Challenger</p>
+							</div>
+
+							<div class="fighter-summary">
+								<h3 class="fighter-name">Sten "stenen"</h3>
+								<p class="fighter-record"><em>Record:</em> <strong>9-4</strong></p>
+							</div>
+
+							<div class="stat-grid" role="list" aria-label="Fighter statistics">
+								<div class="stat-cell" role="listitem"><p class="stat-label">Weight</p><p class="stat-value">Feather</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Height</p><p class="stat-value">176 cm</p></div>
+								<div class="stat-cell" role="listitem"><p class="stat-label">Background</p><p class="stat-value">Pressure MMA</p></div>
+							</div>
+							<div class="fighter-social-row">
+								<p class="fighter-social-label">Social Media</p>
+								<a class="fighter-social-link" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+							</div>
+						</article>
+					</div>
+				</section>
+			</main>
+
+			<footer class="site-footer wrap" aria-label="Social media">
+				<div class="site-footer-social">
+					<a class="site-footer-btn" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<rect x="3" y="3" width="18" height="18" rx="5"></rect>
+							<circle cx="12" cy="12" r="4"></circle>
+							<circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+						</svg>
+					</a>
+					<a class="site-footer-btn" href="https://www.youtube.com/@sc1simon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<rect x="2.5" y="6" width="19" height="12" rx="4"></rect>
+							<path d="M10 9.2L15.8 12L10 14.8Z" fill="currentColor" stroke="none"></path>
+						</svg>
+					</a>
+					<a class="site-footer-btn" href="https://www.instagram.com/sc1simon/reels/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reels">
+						<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+							<rect x="4" y="4" width="16" height="16" rx="4"></rect>
+							<path d="M4 9.5H20M8 4L11 9.5M13 4L16 9.5"></path>
+							<path d="M10.2 11.4L14.8 13.8L10.2 16.2Z" fill="currentColor" stroke="none"></path>
+						</svg>
+					</a>
+				</div>
+			</footer>
+		</div>
+
+		<script src="sc1-config.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

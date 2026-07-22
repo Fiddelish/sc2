@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SC1 | Street MMAs</title>
+    <meta
+      name="description"
+      content="SC1 is a clean modern landing page for Super Clean One, a street MMA brand built around real fights, breakout moments, and community energy."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="file-notice" id="fileNotice" hidden>
+        <div class="wrap file-notice-inner">
+          <strong>YouTube playback needs the localhost version of this site.</strong>
+          <a href="http://localhost:8081/" target="_blank" rel="noopener noreferrer">Open localhost version</a>
+        </div>
+      </div>
+
+      <header class="site-header wrap">
+        <nav class="site-nav site-nav-desktop site-nav-left" aria-label="Primary left">
+          <a href="gallery.html">Gallery</a>
+          <a href="athletes.html">Athletes</a>
+        </nav>
+
+        <a class="brand" href="#top" aria-label="SC1 home">
+          <img class="brand-logo" src="sc1.svg" alt="SC1 logo" />
+        </a>
+
+        <nav class="site-nav site-nav-desktop site-nav-right" aria-label="Primary right">
+          <a href="webshop.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
+
+        <nav class="site-nav" id="primaryNav" aria-label="Primary mobile">
+          <button class="menu-close" type="button" aria-label="Close navigation menu">
+            <span aria-hidden="true">Close</span>
+          </button>
+          <a href="gallery.html">Gallery</a>
+          <a href="athletes.html">Athletes</a>
+          <a href="webshop.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero wrap hero-video">
+          <div class="hero-media" aria-hidden="true">
+            <img class="hero-media-video" src="sc3.jpg" alt="" />
+            <div class="hero-media-overlay"></div>
+            <p class="hero-floating-title">Badlands</p>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="button button-secondary button-right" href="https://www.youtube.com/playlist?list=PLPYLKNd1GJ5s" target="_blank" rel="noopener noreferrer">Explore Badlands</a>
+          </div>
+        </section>
+
+        <section class="section wrap" id="fighters">
+          <div class="section-heading">
+            <p class="eyebrow">Roster</p>
+            <h2>Our Athletes</h2>
+          </div>
+
+          <div class="fighter-carousel" data-fighter-carousel>
+            <div class="fighter-viewport">
+              <div class="fighter-track">
+                <article class="fighter-card is-active">
+                  <div class="fighter-media">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/6296158/free-video-6296158.jpg">
+                      <source src="sc1header.mp4#t=2" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="fighter-copy">
+                    <p class="fighter-tag">Featherweight</p>
+                    <h3>Rami "Northside"</h3>
+                    <p>Pressure striker known for forward combinations and late-round pace.</p>
+                    <div class="fighter-stats">
+                      <span>Record: 8-1</span>
+                      <span>Height: 177 cm</span>
+                      <span>Style: Boxing / MMA</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="fighter-card">
+                  <div class="fighter-media">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/6296158/free-video-6296158.jpg">
+                      <source src="sc1header.mp4#t=9" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="fighter-copy">
+                    <p class="fighter-tag">Middleweight</p>
+                    <h3>Isak "Breakout"</h3>
+                    <p>Explosive counter fighter with sharp entries and fast level changes.</p>
+                    <div class="fighter-stats">
+                      <span>Record: 6-2</span>
+                      <span>Height: 182 cm</span>
+                      <span>Style: Kickboxing</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="fighter-card">
+                  <div class="fighter-media">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/6296158/free-video-6296158.jpg">
+                      <source src="sc1header.mp4#t=14" type="video/mp4" />
+                    </video>
+                  </div>
+                  <div class="fighter-copy">
+                    <p class="fighter-tag">Welterweight</p>
+                    <h3>Milan "Blackline"</h3>
+                    <p>Technical fighter with high fight IQ, strong clinch control, and body work.</p>
+                    <div class="fighter-stats">
+                      <span>Record: 10-3</span>
+                      <span>Height: 180 cm</span>
+                      <span>Style: Muay Thai</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section wrap" id="videos">
+          <div class="section-heading">
+            <p class="eyebrow">YouTube</p>
+            <h2>Latest 3 uploads from sc1simon</h2>
+          </div>
+
+          <div class="video-grid">
+            <article class="video-card">
+              <button class="video-frame video-trigger" type="button" data-video-id="GeXlus9rwPI" data-video-title="SUPER CLEAN ONE: BREAKOUT [Full Event]" aria-label="Play SUPER CLEAN ONE BREAKOUT Full Event">
+                <img src="https://i.ytimg.com/vi/GeXlus9rwPI/hqdefault.jpg" alt="SUPER CLEAN ONE: BREAKOUT [Full Event] thumbnail" />
+                <span class="play-badge">Play</span>
+              </button>
+              <h3>SUPER CLEAN ONE: BREAKOUT [Full Event]</h3>
+              <p>Published June 28, 2026. Full event upload with the full BREAKOUT lineup in one video.</p>
+              <a class="video-link" href="https://www.youtube.com/watch?v=GeXlus9rwPI" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+            </article>
+
+            <article class="video-card">
+              <button class="video-frame video-trigger" type="button" data-video-id="v8fX6LV9Pmk" data-video-title="SUPER CLEAN ONE: BREAKOUT - BORZ VS. BAASKA" aria-label="Play SUPER CLEAN ONE BREAKOUT BORZ VS BAASKA">
+                <img src="https://i.ytimg.com/vi/v8fX6LV9Pmk/hqdefault.jpg" alt="SUPER CLEAN ONE: BREAKOUT - BORZ VS. BAASKA thumbnail" />
+                <span class="play-badge">Play</span>
+              </button>
+              <h3>SUPER CLEAN ONE: BREAKOUT - BORZ VS. BAASKA</h3>
+              <p>Latest individual fight upload from the BREAKOUT card, focused on Borz versus Baaska.</p>
+              <a class="video-link" href="https://www.youtube.com/watch?v=v8fX6LV9Pmk" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+            </article>
+
+            <article class="video-card">
+              <button class="video-frame video-trigger" type="button" data-video-id="ymqtafHMrhY" data-video-title="SUPER CLEAN ONE: BREAKOUT - STRATEGOS VS. WHITE BOY RICK" aria-label="Play SUPER CLEAN ONE BREAKOUT STRATEGOS VS WHITE BOY RICK">
+                <img src="https://i.ytimg.com/vi/ymqtafHMrhY/hqdefault.jpg" alt="SUPER CLEAN ONE: BREAKOUT - STRATEGOS VS. WHITE BOY RICK thumbnail" />
+                <span class="play-badge">Play</span>
+              </button>
+              <h3>SUPER CLEAN ONE: BREAKOUT - STRATEGOS VS. WHITE BOY RICK</h3>
+              <p>Another recent BREAKOUT upload featuring a Muay Thai matchup from the same event rollout.</p>
+              <a class="video-link" href="https://www.youtube.com/watch?v=ymqtafHMrhY" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+            </article>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="site-footer wrap" aria-label="Social media">
+        <div class="site-footer-social">
+          <a class="site-footer-btn" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+          <a class="site-footer-btn" href="https://www.youtube.com/@sc1simon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="2.5" y="6" width="19" height="12" rx="4"></rect>
+              <path d="M10 9.2L15.8 12L10 14.8Z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </a>
+          <a class="site-footer-btn" href="https://www.instagram.com/sc1simon/reels/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reels">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+              <path d="M4 9.5H20M8 4L11 9.5M13 4L16 9.5"></path>
+              <path d="M10.2 11.4L14.8 13.8L10.2 16.2Z" fill="currentColor" stroke="none"></path>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+      <div class="video-modal" id="videoModal" hidden>
+        <div class="video-modal-backdrop" data-close-video></div>
+        <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+          <div class="video-modal-head">
+            <h2 id="videoModalTitle">SC1 Video</h2>
+            <button class="video-modal-close" id="closeVideoModal" type="button" aria-label="Close video">Close</button>
+          </div>
+          <div class="video-modal-player" id="videoModalPlayer"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="sc1-config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

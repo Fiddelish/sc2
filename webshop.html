@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SC1 Merch | Webshop</title>
+		<meta
+			name="description"
+			content="Official SC1 merch store. Shop fight-night gear, hoodies, tees, and limited drops."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<style>
+			:root {
+				--bg: #050505;
+				--paper: rgba(15, 15, 15, 0.9);
+				--ink: #f6f6f6;
+				--muted: #b6b6b6;
+				--line: rgba(255, 255, 255, 0.22);
+				--gold-a: #f0f0f0;
+				--gold-b: #8f8f8f;
+				--radius: 8px;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family: "Manrope", "Segoe UI", sans-serif;
+				color: var(--ink);
+				background:
+					radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.12), transparent 32%),
+					radial-gradient(circle at 88% 18%, rgba(170, 170, 170, 0.1), transparent 30%),
+					linear-gradient(180deg, #050505 0%, #111111 100%);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.wrap {
+				width: min(1160px, calc(100vw - 40px));
+				margin: 0 auto;
+			}
+
+			.site-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 20px;
+				padding: 20px 0 0;
+				z-index: 35;
+				transition:
+					width 0.32s ease,
+					top 0.32s ease,
+					left 0.32s ease,
+					transform 0.32s ease,
+					border-radius 0.32s ease,
+					padding 0.32s ease,
+					background 0.32s ease,
+					box-shadow 0.32s ease,
+					border-color 0.32s ease;
+			}
+
+			main {
+				padding-top: 0;
+			}
+
+			.brand {
+				display: inline-flex;
+				align-items: center;
+				gap: 14px;
+			}
+
+			.brand-logo {
+				width: 66px;
+				height: 66px;
+				border-radius: 8px;
+				object-fit: contain;
+				padding: 4px;
+				display: block;
+			}
+
+			.brand-mark {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 66px;
+				height: 66px;
+				border-radius: 8px;
+				background: #f1f1f1;
+				color: #101010;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: 2rem;
+				letter-spacing: 0.08em;
+			}
+
+			.brand-copy {
+				font-weight: 800;
+			}
+
+			.site-nav {
+				display: inline-flex;
+				gap: 8px;
+				padding: 8px;
+				border: 0;
+				border-radius: 8px;
+				background: transparent;
+				box-shadow: none;
+			}
+
+			.site-nav-desktop {
+				display: none;
+			}
+
+			.site-nav-mobile {
+				display: none;
+			}
+
+			.site-nav a {
+				padding: 9px 12px;
+				border-radius: 6px;
+				border: 0;
+				background: transparent;
+				color: var(--muted);
+				position: relative;
+				overflow: hidden;
+				transition: transform 0.24s ease, color 0.24s ease, text-shadow 0.24s ease, filter 0.24s ease;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				font-size: 0.9rem;
+			}
+
+			.site-nav a::after {
+				content: "";
+				position: absolute;
+				left: 10px;
+				right: 10px;
+				bottom: 4px;
+				height: 2px;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+				transform: scaleX(0.2);
+				opacity: 0;
+				transition: transform 0.26s ease, opacity 0.26s ease;
+			}
+
+			.site-nav a:hover,
+			.site-nav .active {
+				background: transparent;
+				color: var(--ink);
+				transform: translateY(-2px) scale(1.07);
+				filter: brightness(1.3);
+				text-shadow: 0 0 10px rgba(255, 255, 255, 0.65), 0 0 22px rgba(255, 255, 255, 0.35);
+			}
+
+			.site-nav a:hover::after,
+			.site-nav .active::after {
+				transform: scaleX(1);
+				opacity: 1;
+			}
+
+			.site-nav .nav-cta {
+				display: inline-flex;
+			}
+
+			.hero {
+				margin-top: 0;
+				border: 1px solid var(--line);
+				border-radius: 12px;
+				background: var(--paper);
+				padding: clamp(24px, 3.4vw, 44px);
+			}
+
+			.eyebrow {
+				margin: 0 0 10px;
+				color: #d6d6d6;
+				font-size: 0.8rem;
+				font-weight: 800;
+				letter-spacing: 0.18em;
+				text-transform: uppercase;
+			}
+
+			h1 {
+				margin: 0;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(2.6rem, 8vw, 5.4rem);
+				line-height: 0.95;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.hero p {
+				margin: 14px 0 0;
+				color: var(--muted);
+				max-width: 68ch;
+			}
+
+			.actions {
+				margin-top: 18px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+			}
+
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 44px;
+				padding: 0 16px;
+				border-radius: 8px;
+				border: 1px solid var(--line);
+				font-weight: 800;
+				position: relative;
+				overflow: hidden;
+				transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+			}
+
+			.button::after {
+				content: "";
+				position: absolute;
+				top: -120%;
+				left: -40%;
+				width: 36%;
+				height: 340%;
+				background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+				transform: rotate(20deg) translateX(-220%);
+				transition: transform 0.45s ease;
+				pointer-events: none;
+			}
+
+			.button:hover {
+				transform: translateY(-5px) scale(1.08);
+				filter: brightness(1.22) saturate(1.14);
+				box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28), 0 18px 42px rgba(255, 255, 255, 0.34);
+			}
+
+			.button:hover::after {
+				transform: rotate(20deg) translateX(520%);
+			}
+
+			.button:active {
+				transform: translateY(-2px) scale(1.03);
+			}
+
+			.button-primary {
+				background: linear-gradient(135deg, var(--gold-a), var(--gold-b));
+				color: #111;
+			}
+
+			.button-secondary {
+				background: rgba(255, 255, 255, 0.08);
+				color: var(--ink);
+			}
+
+			.panel {
+				margin-top: 22px;
+				border: 1px solid var(--line);
+				border-radius: var(--radius);
+				background: var(--paper);
+				padding: clamp(18px, 3vw, 28px);
+			}
+
+			h2 {
+				margin: 0 0 10px;
+				font-family: "Bebas Neue", Impact, sans-serif;
+				font-size: clamp(1.7rem, 4vw, 2.8rem);
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			#shopify-buy-root {
+				min-height: 240px;
+			}
+
+			.shop-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 14px;
+			}
+
+			.shop-item {
+				border: 1px solid var(--line);
+				border-radius: 16px;
+				overflow: hidden;
+				background: rgba(255, 255, 255, 0.03);
+			}
+
+			.shop-item img {
+				display: block;
+				width: 100%;
+				aspect-ratio: 4 / 5;
+				object-fit: cover;
+			}
+
+			.shop-item-copy {
+				padding: 12px;
+			}
+
+			.shop-item-copy h3 {
+				margin: 0 0 8px;
+				font-size: 1rem;
+			}
+
+			.shop-item-copy p {
+				margin: 0 0 10px;
+				color: var(--muted);
+			}
+
+			.mock-kicker {
+				margin: 0 0 4px;
+				font-size: 0.82rem;
+				color: var(--muted);
+			}
+
+			.mock-badge {
+				display: inline-flex;
+				margin-bottom: 10px;
+				padding: 6px 10px;
+				border-radius: 999px;
+				border: 1px solid var(--line);
+				background: rgba(255, 255, 255, 0.06);
+				color: var(--ink);
+				font-size: 0.72rem;
+				font-weight: 800;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+
+			.helper {
+				margin-top: 14px;
+				border: 1px dashed var(--line);
+				border-radius: 14px;
+				padding: 14px;
+				color: var(--muted);
+				font-size: 0.92rem;
+			}
+
+			.helper code {
+				color: #fff;
+			}
+
+			.site-footer {
+				padding: 18px 0 24px;
+			}
+
+			.site-footer-social {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.site-footer-btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 34px;
+				min-width: 34px;
+				padding: 0;
+				border: 1px solid var(--line);
+				border-radius: 999px;
+				background: rgba(255, 255, 255, 0.05);
+				color: var(--muted);
+				transition: color 0.24s ease, border-color 0.24s ease, transform 0.24s ease, background 0.24s ease;
+			}
+
+			.site-footer-btn svg {
+				width: 16px;
+				height: 16px;
+				display: block;
+				stroke: currentColor;
+				stroke-width: 1.8;
+				fill: none;
+			}
+
+			.site-footer-btn:hover {
+				color: var(--ink);
+				border-color: rgba(255, 255, 255, 0.42);
+				background: rgba(255, 255, 255, 0.1);
+				transform: translateY(-1px);
+			}
+
+			@media (max-width: 760px) {
+				.site-header {
+					position: sticky;
+					top: 0;
+					z-index: 45;
+					display: grid;
+					grid-template-columns: minmax(0, 1fr);
+					gap: 10px;
+					padding: 10px 10px 8px;
+					border: 1px solid var(--line);
+					border-radius: 10px;
+					background: rgba(7, 7, 7, 0.94);
+					backdrop-filter: blur(10px);
+					box-shadow: 0 10px 24px rgba(0, 0, 0, 0.42);
+				}
+
+				.brand {
+					gap: 10px;
+				}
+
+				.brand-logo {
+					width: 48px;
+					height: 48px;
+					border-radius: 8px;
+					object-fit: contain;
+					padding: 2px;
+				}
+
+				.brand-logo {
+					display: none;
+				}
+
+				.brand-copy {
+					font-size: 0.9rem;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+
+				.site-nav {
+					width: 100%;
+					justify-content: flex-start;
+					flex-wrap: nowrap;
+					overflow-x: auto;
+					padding: 8px;
+					gap: 6px;
+					border: 1px solid var(--line);
+					border-radius: 8px;
+					background: rgba(255, 255, 255, 0.03);
+					scrollbar-width: thin;
+					scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+				}
+
+				.site-nav a {
+					flex: 0 0 auto;
+					min-height: 38px;
+					padding: 8px 9px;
+					font-size: 0.82rem;
+					letter-spacing: 0.08em;
+					white-space: nowrap;
+					text-align: center;
+				}
+
+				.site-nav-desktop {
+					display: none;
+				}
+
+				.site-nav-mobile {
+					display: inline-flex;
+				}
+
+				.site-footer {
+					padding: 14px 0 18px;
+				}
+
+				.site-footer-social {
+					gap: 6px;
+				}
+
+				.site-footer-btn {
+					min-height: 32px;
+					min-width: 32px;
+				}
+			}
+
+			@media (min-width: 761px) {
+				.site-header {
+					display: grid;
+					grid-template-columns: 1fr auto 1fr;
+					align-items: center;
+					gap: 36px;
+					position: fixed;
+					top: 10px;
+					left: 50%;
+					transform: translateX(-50%);
+					width: min(1160px, calc(100vw - 40px));
+					max-width: calc(100vw - 40px);
+					padding: 14px 18px;
+					border: 1px solid var(--line);
+					border-radius: 10px;
+					background: rgba(9, 9, 9, 0.84);
+					backdrop-filter: blur(10px);
+					box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+				}
+
+				.brand {
+					justify-self: center;
+				}
+
+				.site-nav-desktop {
+					display: inline-flex;
+				}
+
+				.site-nav-left {
+					justify-self: end;
+				}
+
+				.site-nav-right {
+					justify-self: start;
+				}
+
+				.site-nav-mobile {
+					display: none;
+				}
+
+				main {
+					padding-top: 138px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site-header wrap">
+			<nav class="site-nav site-nav-desktop site-nav-left" aria-label="Primary left">
+				<a href="gallery.html">Gallery</a>
+				<a href="athletes.html">Athletes</a>
+			</nav>
+
+			<a class="brand" href="index.html" aria-label="SC1 home">
+				<img class="brand-logo" src="sc1.svg" alt="SC1 logo" />
+				
+			</a>
+
+			<nav class="site-nav site-nav-desktop site-nav-right" aria-label="Primary right">
+				<a class="active" href="webshop.html">Shop</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+
+			<nav class="site-nav site-nav-mobile" aria-label="Primary mobile">
+				<a href="gallery.html">Gallery</a>
+				<a href="athletes.html">Athletes</a>
+				<a class="active" href="webshop.html">Shop</a>
+				<a href="contact.html">Contact</a>
+			</nav>
+		</header>
+
+		<main class="wrap">
+			<section class="hero">
+				<p class="eyebrow">Official Store</p>
+				<h1>SC1 Merch Drop</h1>
+				<p>
+					Shop the latest SC1 fight-night apparel and limited releases
+				</p>
+				<div class="actions">
+					<a class="button button-primary" id="openStoreLink" href="#" target="_blank" rel="noopener noreferrer">Open Full Shopify Store</a>
+					<a class="button button-secondary" href="index.html">Back To Main Site</a>
+				</div>
+			</section>
+
+			<section class="panel" aria-labelledby="mock-title">
+				<h2 id="mock-title">Test Showcase av merch</h2>
+				<p class="mock-kicker"></p>
+				<div class="shop-grid">
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/6311650/pexels-photo-6311650.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Fight Night Hoodie" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">New Drop</span>
+							<h3>SC1 Fight Night Hoodie</h3>
+							<p>89.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Fight Night Hoodie">Preview Item</a>
+						</div>
+					</article>
+
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/5698851/pexels-photo-5698851.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Corner Team Tee" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">Best Seller</span>
+							<h3>SC1 Corner Team Tee</h3>
+							<p>39.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Corner Team Tee">Preview Item</a>
+						</div>
+					</article>
+
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Walkout Jacket" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">Limited</span>
+							<h3>SC1 Walkout Jacket</h3>
+							<p>119.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Walkout Jacket">Preview Item</a>
+						</div>
+					</article>
+
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/6311397/pexels-photo-6311397.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Heavyweight Sweatpants" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">Training</span>
+							<h3>SC1 Heavyweight Sweatpants</h3>
+							<p>64.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Heavyweight Sweatpants">Preview Item</a>
+						</div>
+					</article>
+
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/9558583/pexels-photo-9558583.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Signature Cap" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">Accessories</span>
+							<h3>SC1 Signature Cap</h3>
+							<p>29.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Signature Cap">Preview Item</a>
+						</div>
+					</article>
+
+					<article class="shop-item">
+						<img src="https://images.pexels.com/photos/5698856/pexels-photo-5698856.jpeg?auto=compress&cs=tinysrgb&w=900" alt="SC1 Event Poster Pack" loading="lazy" />
+						<div class="shop-item-copy">
+							<span class="mock-badge">Collector</span>
+							<h3>SC1 Event Poster Pack</h3>
+							<p>24.00 EUR</p>
+							<a class="button button-primary" href="#" aria-label="Preview SC1 Event Poster Pack">Preview Item</a>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="panel" aria-labelledby="shop-title">
+				<h2 id="shop-title">Most Popular</h2>
+				<div id="shopify-buy-root"></div>
+				<div class="helper" id="shopHelper"></div>
+			</section>
+		</main>
+
+		<footer class="site-footer wrap" aria-label="Social media">
+			<div class="site-footer-social">
+				<a class="site-footer-btn" href="https://www.instagram.com/sc1simon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<rect x="3" y="3" width="18" height="18" rx="5"></rect>
+						<circle cx="12" cy="12" r="4"></circle>
+						<circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
+					</svg>
+				</a>
+				<a class="site-footer-btn" href="https://www.youtube.com/@sc1simon" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<rect x="2.5" y="6" width="19" height="12" rx="4"></rect>
+						<path d="M10 9.2L15.8 12L10 14.8Z" fill="currentColor" stroke="none"></path>
+					</svg>
+				</a>
+				<a class="site-footer-btn" href="https://www.instagram.com/sc1simon/reels/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reels">
+					<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<rect x="4" y="4" width="16" height="16" rx="4"></rect>
+						<path d="M4 9.5H20M8 4L11 9.5M13 4L16 9.5"></path>
+						<path d="M10.2 11.4L14.8 13.8L10.2 16.2Z" fill="currentColor" stroke="none"></path>
+					</svg>
+				</a>
+			</div>
+		</footer>
+
+		<script src="sc1-config.js"></script>
+		<script>
+			const runtimeShopify = (window.SC1_CONFIG && window.SC1_CONFIG.shopify) || {};
+
+			const SHOPIFY_CONFIG = {
+				domain: runtimeShopify.domain || "your-store.myshopify.com",
+				storefrontAccessToken: runtimeShopify.storefrontAccessToken || "YOUR_STOREFRONT_ACCESS_TOKEN",
+				productHandle: runtimeShopify.productHandle || "all",
+				productsLimit: Number(runtimeShopify.productsLimit) || 8,
+			};
+
+			const helper = document.getElementById("shopHelper");
+			const openStoreLink = document.getElementById("openStoreLink");
+			const domainReady = SHOPIFY_CONFIG.domain && SHOPIFY_CONFIG.domain !== "your-store.myshopify.com";
+			const tokenReady =
+				SHOPIFY_CONFIG.storefrontAccessToken && SHOPIFY_CONFIG.storefrontAccessToken !== "YOUR_STOREFRONT_ACCESS_TOKEN";
+
+			const publicStoreUrl = domainReady
+				? `https://${SHOPIFY_CONFIG.domain}/collections/${SHOPIFY_CONFIG.productHandle}`
+				: "https://your-store.myshopify.com/collections/all";
+
+			openStoreLink.href = publicStoreUrl;
+
+			if (!domainReady || !tokenReady) {
+				helper.innerHTML =
+					"Shopify not fully connected yet. Add your real <code>domain</code> and <code>storefrontAccessToken</code> in <code>sc1-config.js</code>.";
+			} else {
+				helper.textContent = "Shopify connected. Loading embedded product collection...";
+			}
+
+			(async function loadShopifyProducts() {
+				if (!domainReady || !tokenReady) {
+					return;
+				}
+
+				const query = `
+					query GetProducts($first: Int!, $handle: String!) {
+						collectionByHandle(handle: $handle) {
+							products(first: $first) {
+								edges {
+									node {
+										id
+										title
+										handle
+										onlineStoreUrl
+										featuredImage {
+											url
+											altText
+										}
+										priceRange {
+											minVariantPrice {
+												amount
+												currencyCode
+											}
+										}
+									}
+								}
+							}
+						}
+						products(first: $first) {
+							edges {
+								node {
+									id
+									title
+									handle
+									onlineStoreUrl
+									featuredImage {
+										url
+										altText
+									}
+									priceRange {
+										minVariantPrice {
+											amount
+											currencyCode
+										}
+									}
+								}
+							}
+						}
+					}
+				`;
+
+				try {
+					const response = await fetch(`https://${SHOPIFY_CONFIG.domain}/api/2024-10/graphql.json`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							"X-Shopify-Storefront-Access-Token": SHOPIFY_CONFIG.storefrontAccessToken,
+						},
+						body: JSON.stringify({ query, variables: { first: SHOPIFY_CONFIG.productsLimit, handle: SHOPIFY_CONFIG.productHandle } }),
+					});
+
+					if (!response.ok) {
+						throw new Error("Failed to fetch products from Shopify");
+					}
+
+					const payload = await response.json();
+					const products =
+						payload?.data?.collectionByHandle?.products?.edges?.map((edge) => edge.node) ||
+						payload?.data?.products?.edges?.map((edge) => edge.node) ||
+						[];
+
+					if (!products.length) {
+						helper.innerHTML =
+							`Connected to Shopify, but no products were returned. Check your sales channel permissions. Browse: <a href="${publicStoreUrl}" target="_blank" rel="noopener noreferrer">${publicStoreUrl}</a>`;
+						return;
+					}
+
+					const root = document.getElementById("shopify-buy-root");
+					root.innerHTML = `<div class="shop-grid">${products
+						.map((product) => {
+							const amount = Number(product.priceRange.minVariantPrice.amount).toFixed(2);
+							const currency = product.priceRange.minVariantPrice.currencyCode;
+							const image = product.featuredImage?.url || "";
+							const alt = product.featuredImage?.altText || product.title;
+							const productUrl = product.onlineStoreUrl || `https://${SHOPIFY_CONFIG.domain}/products/${product.handle}`;
+
+							return `
+								<article class="shop-item">
+									${image ? `<img src="${image}" alt="${alt}" loading="lazy" />` : ""}
+									<div class="shop-item-copy">
+										<h3>${product.title}</h3>
+										<p>${amount} ${currency}</p>
+										<a class="button button-primary" href="${productUrl}" target="_blank" rel="noopener noreferrer">Buy On Shopify</a>
+									</div>
+								</article>
+							`;
+						})
+						.join("")}</div>`;
+
+					helper.innerHTML =
+						`Shopify connected. Products are loaded from your store. Full catalog: <a href="${publicStoreUrl}" target="_blank" rel="noopener noreferrer">${publicStoreUrl}</a>`;
+				} catch (error) {
+					helper.innerHTML =
+						`Could not load embedded products yet. Check domain/token and Storefront API access. You can still open: <a href="${publicStoreUrl}" target="_blank" rel="noopener noreferrer">${publicStoreUrl}</a>`;
+				}
+			})();
+		</script>
+	</body>
+</html>
